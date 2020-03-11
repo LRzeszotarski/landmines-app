@@ -81,39 +81,28 @@ public class LandMinesImpl implements LandMines {
     private void markEastAsSafe(FieldCoordinates currentCoordinates, FieldState[][] land, Queue<FieldCoordinates> availableFields, Set<FieldCoordinates> checkedFields) {
         for (int x = currentCoordinates.getX() + 1; x < land.length; x++) {
             final FieldCoordinates pointedCoordinates = new FieldCoordinates(x, currentCoordinates.getY());
-            if (!checkedFields.contains(pointedCoordinates) && !availableFields.contains(pointedCoordinates)) {
-                land[pointedCoordinates.getY()][pointedCoordinates.getX()] = SAFE;
-                availableFields.add(pointedCoordinates);            }
-
+            markFieldIfNotMarked(land, availableFields, checkedFields, pointedCoordinates);
         }
     }
 
     private void markWestAsSafe(FieldCoordinates currentCoordinates, FieldState[][] land, Queue<FieldCoordinates> availableFields, Set<FieldCoordinates> checkedFields) {
         for (int x = 0; x < currentCoordinates.getX(); x++) {
             final FieldCoordinates pointedCoordinates = new FieldCoordinates(x, currentCoordinates.getY());
-            if (!checkedFields.contains(pointedCoordinates) && !availableFields.contains(pointedCoordinates)) {
-                land[pointedCoordinates.getY()][pointedCoordinates.getX()] = SAFE;
-                availableFields.add(pointedCoordinates);
-            }
+            markFieldIfNotMarked(land, availableFields, checkedFields, pointedCoordinates);
         }
     }
 
     private void markSouthAsSafe(FieldCoordinates currentCoordinates, FieldState[][] land, Queue<FieldCoordinates> availableFields, Set<FieldCoordinates> checkedFields) {
         for (int y = currentCoordinates.getY() + 1; y < land.length; y++) {
             final FieldCoordinates pointedCoordinates = new FieldCoordinates(currentCoordinates.getX(), y);
-            if (!checkedFields.contains(pointedCoordinates) && !availableFields.contains(pointedCoordinates)) {
-                land[pointedCoordinates.getY()][pointedCoordinates.getX()] = SAFE;
-                availableFields.add(pointedCoordinates);            }
+            markFieldIfNotMarked(land, availableFields, checkedFields, pointedCoordinates);
         }
     }
 
     private void markNorthAsSafe(FieldCoordinates currentCoordinates, FieldState[][] land, Queue<FieldCoordinates> availableFields, Set<FieldCoordinates> checkedFields) {
         for (int y = 0; y < currentCoordinates.getY(); y++) {
             final FieldCoordinates pointedCoordinates = new FieldCoordinates(currentCoordinates.getX(), y);
-            if (!checkedFields.contains(pointedCoordinates) && !availableFields.contains(pointedCoordinates)) {
-                land[pointedCoordinates.getY()][pointedCoordinates.getX()] = SAFE;
-                availableFields.add(pointedCoordinates);
-            }
+            markFieldIfNotMarked(land, availableFields, checkedFields, pointedCoordinates);
         }
     }
 
@@ -157,5 +146,12 @@ public class LandMinesImpl implements LandMines {
             }
         }
         return false;
+    }
+
+    private void markFieldIfNotMarked(FieldState[][] land, Queue<FieldCoordinates> availableFields, Set<FieldCoordinates> checkedFields, FieldCoordinates pointedCoordinates) {
+        if (!checkedFields.contains(pointedCoordinates) && !availableFields.contains(pointedCoordinates)) {
+            land[pointedCoordinates.getY()][pointedCoordinates.getX()] = SAFE;
+            availableFields.add(pointedCoordinates);
+        }
     }
 }
