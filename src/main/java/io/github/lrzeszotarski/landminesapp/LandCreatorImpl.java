@@ -21,10 +21,10 @@ public class LandCreatorImpl implements LandCreator {
 
     private FieldState translate(char fieldCharacter) {
         return switch (fieldCharacter) {
-            case '-': yield UNKNOWN;
-            case 'M': yield MINE;
-            case '.': yield SAFE;
-            default: throw new IllegalStateException("other fields are not allowed");
+            case '-' -> UNKNOWN;
+            case 'M' -> MINE;
+            case '.' -> SAFE;
+            default -> throw new IllegalStateException("Unexpected value: " + fieldCharacter);
         };
     }
 }
