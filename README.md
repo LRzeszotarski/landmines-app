@@ -25,18 +25,18 @@ Constraints:
 
 Examples:
 ----------
-{"-M-", "---", "M--"}
+["-M-", "---", "M--"]
 Returns: 1
 The soldier cannot safely move in either direction from his initial position.
         
-{"-M-", "-M-", "--M"}
+["-M-", "-M-", "--M"]
 Returns: 3
 The soldier can safely go south from his initial position, but cannot head east from any of those locations.
         
-{"--M-", "-MM-", "----", "----"}
+["--M-", "-MM-", "----", "----"]
 Returns: 12
 The soldier can go south, and then can move east along both of the bottom rows. From the easternmost location on one of the bottom rows, he can safely move north. But the second square in the top row can never safely be visited.
        
-{"-----" , "--M-M", "-----", "-M---", "---M-"}
+["-----" , "--M-M", "-----", "-M---", "---M-"]
 Returns: 21
 All of the squares without mines can safely be visited. For example, a way to visit the second square on the bottom row is as follows: go south 2, go east 2. From this location it is safe to go south since the detector indicates no mines in that direction; go south 2. Then go west 1.
