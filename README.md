@@ -1,6 +1,16 @@
 # landmines-app
 Landmines App
 
+REST API:
+---------
+Request URL: http://localhost:8080/numClear
+
+Open API Definition: http://localhost:8080/swagger-ui/index.html
+
+Request Example: 
+```
+curl -X POST "http://localhost:8080/numClear" -H "accept: */*" -H "Content-Type: application/json" -d "[\"-----\",\"--M-M\",\"-----\",\"-M---\",\"---M-\"]"
+```
 Description of the Problem:
 ---------------------------
 We want to send a soldier into a mine field with a directional metal detector. The field is an n x n grid, and the soldier will move horizontally (east or west) or vertically (north or south), never leaving the field. His metal detector can be pointed in any of the cardinal directions (east, north, west, or south) and will beep if it senses any mine in that direction, no matter how far away the mine is. Only mines that are exactly in the row or column down which the sensor is pointed are sensed.
