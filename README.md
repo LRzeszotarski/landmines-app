@@ -20,11 +20,11 @@ The layout shows the mine field as a String[], starting with the top row. '-' de
 
 Definition:
 -----------
-Class: LandMines / LandMinesObj
-Method: numClear
-Parameters: String []
-Returns: int
-Method signature: int numClear(String layout[])
+- Class: LandMines / LandMinesObj
+- Method: numClear
+- Parameters: String []
+- Returns: int
+- Method signature: int numClear(String layout[])
 
 Constraints:
 ------------
